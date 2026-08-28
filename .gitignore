@@ -1,0 +1,13 @@
+.gocache/
+.gomodcache/
+.gopath/
+.condapkgs/
+.venv-py310/
+/tthr
+*.tthr
+*.tthr.key
+*.tthr.pub
+dist/
+*.exe
+*.AppImage
+WOSv0.3.1*
