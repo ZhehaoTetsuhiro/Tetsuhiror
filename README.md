@@ -143,3 +143,7 @@ go run ./cmd/tthrbench      # 压缩基准 (TCZ vs gzip)
 ## 安全性说明
 
 本项目为自研算法的实验性实现: THASH-256、TStream、TMAC、T-IES 均为本项目原创构造, **未经过第三方密码分析与审计**, 不应用于生产环境的高价值数据保护。T-IES 使用的群参数为公开标准 (RFC 3526 组 14), 构造本身自研。压缩解压带有路径穿越防护与条目 CRC 校验。
+
+## 许可证
+
+本项目以 [AGPL-3.0](LICENSE) 许可证发布。变更记录见 [CHANGELOG.md](CHANGELOG.md)。
