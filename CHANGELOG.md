@@ -33,7 +33,6 @@
 ### 构建
 
 - 提供 Windows x86-64、Linux x86-64 静态二进制
-- 提供 Linux AppImage 打包
 
 ### 许可证
 

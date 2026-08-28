@@ -36,7 +36,6 @@
 |------|------|
 | Windows x86-64 | `tetsuhiror-vX.Y.Z-windows-amd64.exe` |
 | Linux x86-64 | `tetsuhiror-vX.Y.Z-linux-amd64` (静态链接) |
-| Linux x86-64 | `Tetsuhiror-vX.Y.Z-x86_64.AppImage` |
 
 或从源码构建 (需要 Go ≥ 1.25):
 
