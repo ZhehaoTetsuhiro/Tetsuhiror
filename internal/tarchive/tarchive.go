@@ -1,4 +1,4 @@
-// Package tarchive 定义 .tthr 的归档流格式。
+// Package tarchive 定义 .tet 的归档流格式。
 //
 // 归档流是一个简单的顺序记录格式 (类 tar):
 //

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""tthr 量子增强脚本 (QPanda) — Shor 周期查找增强模式。
+"""tet 量子增强脚本 (QPanda) — Shor 周期查找增强模式。
 
 用法: qenhance.py <bytes-needed> [mode] [batch-qubits]
 

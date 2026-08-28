@@ -1,4 +1,4 @@
-// Package tcontainer 定义 .tthr 容器格式。
+// Package tcontainer 定义 .tet 容器格式。
 //
 // 文件布局 (小端):
 //
@@ -61,8 +61,8 @@ const (
 	maxPayload  = 8 << 30
 )
 
-// ErrNotTthr 不是合法 .tthr 文件。
-var ErrNotTthr = errors.New("tcontainer: 不是合法的 .tthr 文件")
+// ErrNotTthr 不是合法 .tet 文件。
+var ErrNotTthr = errors.New("tcontainer: 不是合法的 .tet 文件")
 
 // Meta 是容器内嵌元数据 (加密存放)。
 type Meta struct {
@@ -218,7 +218,7 @@ type UnpackResult struct {
 	Quantum bool
 }
 
-// Unpack 从 r 读入 .tthr, 用 keyReader 的私钥解密。
+// Unpack 从 r 读入 .tet, 用 keyReader 的私钥解密。
 func Unpack(r io.Reader, keyReader io.Reader) (*UnpackResult, error) {
 	raw, err := io.ReadAll(r)
 	if err != nil {

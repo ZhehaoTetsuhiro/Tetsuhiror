@@ -7,10 +7,10 @@ import (
 	"tetsuhiro/tthr/internal/tcontainer"
 )
 
-// cmdInfo: tthr info <文件.tthr>
+// cmdInfo: tet info <文件.tet>
 func cmdInfo(args []string) error {
 	if len(args) != 1 {
-		return fmt.Errorf("info 需要一个 .tthr 文件参数")
+		return fmt.Errorf("info 需要一个 .tet 文件参数")
 	}
 	f, err := os.Open(args[0])
 	if err != nil {

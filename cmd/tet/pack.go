@@ -13,7 +13,7 @@ import (
 	"tetsuhiro/tthr/internal/tcz"
 )
 
-// cmdPack: tthr pack [选项] <目录>
+// cmdPack: tet pack [选项] <目录>
 func cmdPack(args []string) error {
 	var opt struct {
 		output   string
@@ -83,7 +83,7 @@ func cmdPack(args []string) error {
 	outPath := opt.output
 	if outPath == "" {
 		base := filepath.Base(filepath.Clean(target))
-		outPath = base + ".tthr"
+		outPath = base + ".tet"
 	}
 	outAbs, err := filepath.Abs(outPath)
 	if err != nil {

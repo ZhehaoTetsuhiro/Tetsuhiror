@@ -3,7 +3,7 @@ package tac
 // TStream — 自研密钥流生成器 (hash-counter 模式)。
 //
 // 第 i 个 32 字节块 = THASH(key || nonce || u64le(i))。
-// 密钥流质量直接依赖 THASH 的扩散性; 用于 tthr 的对称加密。
+// 密钥流质量直接依赖 THASH 的扩散性; 用于 tet 的对称加密。
 
 import "encoding/binary"
 

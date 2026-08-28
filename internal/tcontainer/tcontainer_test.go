@@ -95,8 +95,8 @@ func TestUnpackTamperedPayload(t *testing.T) {
 }
 
 func TestNotTthr(t *testing.T) {
-	if _, err := Unpack(bytes.NewReader([]byte("not a tthr file")), strings.NewReader("key")); err == nil {
-		t.Fatal("非 tthr 文件未被拒绝")
+	if _, err := Unpack(bytes.NewReader([]byte("not a tet file")), strings.NewReader("key")); err == nil {
+		t.Fatal("非 tet 文件未被拒绝")
 	}
 }
 

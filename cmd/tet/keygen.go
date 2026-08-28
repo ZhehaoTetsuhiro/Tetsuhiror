@@ -8,7 +8,7 @@ import (
 	"tetsuhiro/tthr/internal/tcontainer"
 )
 
-// cmdKeygen: tthr keygen [选项]
+// cmdKeygen: tet keygen [选项]
 func cmdKeygen(args []string) error {
 	var opt struct {
 		output string
@@ -50,7 +50,7 @@ func cmdKeygen(args []string) error {
 
 	prefix := opt.output
 	if prefix == "" {
-		prefix = "tthr-key"
+		prefix = "tet-key"
 	}
 	if err := os.WriteFile(prefix+".key", privText, 0o600); err != nil {
 		return err

@@ -11,6 +11,13 @@
 
 首个发布版本。
 
+> **2026-08-28 更新**: 命令行二进制由 `tthr` 更名为 `tet` (源码目录 `cmd/tthr` → `cmd/tet`),
+> 归档文件后缀由 `.tthr` 改为 `.tet`, 密钥文件相应为 `<文件>.tet.key` / `<文件>.tet.pub`;
+> 环境变量 `TTHR_PYTHON` 更名为 `TET_PYTHON`, `keygen` 默认密钥前缀改为 `tet-key`;
+> 行内版本号与 Release 对齐为 `0.1.0`。v0.1.0 Release 资产已替换为新二进制。
+> 容器二进制格式不变 (magic `TTHR`、KDF 域分离标签、密钥 PEM 标记均保持原样),
+> 旧 `.tthr` 容器与密钥仍可解包使用。
+
 ### 新增
 
 - **TCZ 压缩算法** (`internal/tcz`): 自研两级流水线压缩

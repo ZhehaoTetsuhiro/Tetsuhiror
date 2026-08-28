@@ -12,7 +12,7 @@ import (
 	"tetsuhiro/tthr/internal/tcz"
 )
 
-// cmdUnpack: tthr unpack [选项] <文件.tthr>
+// cmdUnpack: tet unpack [选项] <文件.tet>
 func cmdUnpack(args []string) error {
 	var opt struct {
 		dest  string
@@ -48,9 +48,9 @@ func cmdUnpack(args []string) error {
 		}
 	}
 	if target == "" {
-		return fmt.Errorf("unpack 需要一个 .tthr 文件参数")
+		return fmt.Errorf("unpack 需要一个 .tet 文件参数")
 	}
-	if !strings.HasSuffix(target, ".tthr") {
+	if !strings.HasSuffix(target, ".tet") {
 		// 宽容: 允许任意文件名, 但提示
 	}
 
@@ -104,7 +104,7 @@ func cmdUnpack(args []string) error {
 	dest := opt.dest
 	if dest == "" {
 		base := filepath.Base(target)
-		base = strings.TrimSuffix(base, ".tthr")
+		base = strings.TrimSuffix(base, ".tet")
 		dest = base
 	}
 	if err := os.MkdirAll(dest, 0o755); err != nil {

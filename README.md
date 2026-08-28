@@ -42,43 +42,43 @@
 ```bash
 git clone https://github.com/ZhehaoTetsuhiro/Tetsuhiror.git
 cd Tetsuhiror
-go build -o tthr ./cmd/tthr
+go build -o tet ./cmd/tet
 ```
 
 ## 🚀 快速开始
 
 ```bash
-# 把目录压缩+加密为 .tthr (自动生成密钥)
-./tthr pack mydir                 # 产出 mydir.tthr + mydir.tthr.key
+# 把目录压缩+加密为 .tet (自动生成密钥)
+./tet pack mydir                 # 产出 mydir.tet + mydir.tet.key
 
 # 解密+解压 (未指定目录时在当前目录创建同名文件夹)
-./tthr unpack mydir.tthr          # 提取到 ./mydir/
+./tet unpack mydir.tet          # 提取到 ./mydir/
 
 # 使用指定私钥解压
-./tthr unpack mydir.tthr -k mydir.tthr.key -d /target/dir
+./tet unpack mydir.tet -k mydir.tet.key -d /target/dir
 
 # 查看容器信息 (不泄露内容)
-./tthr info mydir.tthr
+./tet info mydir.tet
 ```
 
 ## 🧭 命令一览
 
 | 命令 | 说明 |
 |------|------|
-| `tthr pack [选项] <目录>` | 压缩 + 加密为 `.tthr` 容器 |
-| `tthr unpack [选项] <文件.tthr>` | 解密 + 解压 |
-| `tthr keygen [选项]` | 生成 T-IES 密钥对 |
-| `tthr info <文件.tthr>` | 查看容器头部信息 |
+| `tet pack [选项] <目录>` | 压缩 + 加密为 `.tet` 容器 |
+| `tet unpack [选项] <文件.tet>` | 解密 + 解压 |
+| `tet keygen [选项]` | 生成 T-IES 密钥对 |
+| `tet info <文件.tet>` | 查看容器头部信息 |
 
 <details>
 <summary><b>pack 选项</b></summary>
 
 ```text
--o, --output <file>   输出文件 (默认 <目录名>.tthr)
+-o, --output <file>   输出文件 (默认 <目录名>.tet)
 -k, --key <file>      接收方公钥 (.pub); 省略则自动生成并保存私钥到 <输出>.key
 -q, --quantum         启用 QPanda 量子随机增强 (默认开, Shor 周期查找模式)
     --no-quantum      禁用量子增强, 回退系统熵
-    --python <path>   pyqpanda 解释器路径 (或环境变量 TTHR_PYTHON)
+    --python <path>   pyqpanda 解释器路径 (或环境变量 TET_PYTHON)
     --quiet           静默模式
 ```
 
@@ -98,7 +98,7 @@ go build -o tthr ./cmd/tthr
 ## 🏗 架构
 
 ```text
-目录 ──▶ tarchive (类 tar 归档流) ──▶ tcz (压缩) ──▶ tcontainer (加密) ──▶ .tthr
+目录 ──▶ tarchive (类 tar 归档流) ──▶ tcz (压缩) ──▶ tcontainer (加密) ──▶ .tet
                                           │
                                           └──▶ qpad (Shor QPE 量子测量 + THASH 提取, 参与 KDF)
 ```
@@ -160,12 +160,12 @@ pack 时默认以 **Shor 周期查找增强模式** 通过 pyqpanda CPUQVM 产�
 
 `constModExp`/`QFT` 不可用时逐级回退: Hadamard 叠加态测量模式 (旧行为) → 系统 CSPRNG。
 
-Python 解释器发现顺序: `--python` / `TTHR_PYTHON` > 可执行文件与工作目录附近 venv (`.venv-py310`/`.venv`/`venv`) > PATH 上的 python3/python (需可 import pyqpanda)。全部失败时回退系统 CSPRNG 并在输出中注明。
+Python 解释器发现顺序: `--python` / `TET_PYTHON` > 可执行文件与工作目录附近 venv (`.venv-py310`/`.venv`/`venv`) > PATH 上的 python3/python (需可 import pyqpanda)。全部失败时回退系统 CSPRNG 并在输出中注明。
 
 </details>
 
 <details>
-<summary><b>📦 .tthr 容器格式 (<code>internal/tcontainer</code>)</b></summary>
+<summary><b>📦 .tet 容器格式 (<code>internal/tcontainer</code>)</b></summary>
 
 ```text
 magic "TTHR" | ver u8 | flags u8 | rsvd u16 | keyBlobLen u32 | payloadLen u64 | macLen u32
@@ -195,9 +195,9 @@ pyqpanda 需要 Python 3.8–3.10 (不支持 3.13):
 conda create -y -p .venv-py310 python=3.10
 .venv-py310/bin/pip install pyqpanda
 
-# 项目根目录 (或 tthr 可执行文件所在目录) 的 .venv-py310 会被自动发现;
+# 项目根目录 (或 tet 可执行文件所在目录) 的 .venv-py310 会被自动发现;
 # 也可显式指定:
-TTHR_PYTHON=$PWD/.venv-py310/bin/python ./tthr pack mydir
+TET_PYTHON=$PWD/.venv-py310/bin/python ./tet pack mydir
 ```
 
 > 不想折腾量子环境? 加 `--no-quantum` 即可, 回退系统熵, 功能不受影响。
